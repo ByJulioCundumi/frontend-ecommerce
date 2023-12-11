@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    //font-family: 'Poppins', sans-serif;
+    font-family: 'Raleway', sans-serif;
+}
+
+button{
+    border: 1px solid rgba(0, 0, 0, 0.219);
+    background-color: transparent;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.205);
+    border-radius: 0.3rem;
+    width: 8rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+input{
+    border: 1px solid rgba(0, 0, 0, 0.219);
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    outline: none;
+}

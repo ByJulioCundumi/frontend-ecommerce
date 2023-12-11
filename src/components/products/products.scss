@@ -1,0 +1,47 @@
+.products{
+    margin-left: 260px;
+    padding: 1rem 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.product{
+    border: 1px solid rgba(0, 0, 0, 0.178);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.151);
+    border-radius: 0.3rem;
+
+    &__img{
+        width: 230px;
+        height: 160px;
+        object-fit: contain;
+    }
+
+    &__text{
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    &__prices{
+        display: flex;
+        gap: 1rem;
+    }
+
+    &__btn{
+        width: 100%;
+        box-shadow: none;
+    }
+
+    &__cta{
+        display: flex;
+        gap: 1rem;
+    }
+
+}
+
+.product__price--prev{
+    text-decoration: line-through;
+}

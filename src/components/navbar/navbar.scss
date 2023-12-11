@@ -1,0 +1,37 @@
+.nav{
+    margin-left: 260px;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 5rem;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.13);
+
+    &__ul{
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    &__form--input{
+        width: 20rem;
+        padding: 0.9rem;
+    }
+
+    &__icon{
+        font-size: 1.2rem;
+    }
+
+    &__btn{
+        border: none;
+        box-shadow: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        width: fit-content;
+        color: black;
+    }
+}
+

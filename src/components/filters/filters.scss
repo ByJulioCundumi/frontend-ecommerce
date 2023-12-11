@@ -1,0 +1,58 @@
+.filters{
+    padding: 1rem 1.5rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.13);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 260px;
+    background-color: white;
+    z-index: 100;
+
+    &__title{
+        text-align: center;
+        padding: .6rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.062);
+    }
+
+    &__category{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding-top: 4rem;
+        margin-left: 2rem;
+
+        &--names{
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        &--prices{
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding-left: 1rem;
+        }
+
+        &--select{
+            display: flex;
+            gap: 0.3rem;
+        }
+    }
+}
+
+.radio{
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-left: 1.5rem;
+    transition: all 0.2s;
+    border: 2px solid rgba(0, 0, 0, 0.096);
+    appearance: none;
+}
+
+.radio:checked{
+    background-color: #acaeb1;
+    border-color: rgba(0, 0, 0, 0.171);
+    box-shadow: 0 0 0px 1px #acaeb1;
+}
