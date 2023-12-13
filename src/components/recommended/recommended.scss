@@ -1,8 +1,10 @@
 .recommended{
     margin-left: 260px;
-    padding: 1.5rem 3rem;
+    padding: 1.5rem 4rem;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 1rem;
 
     &__products{
@@ -15,6 +17,6 @@
         box-shadow: none;
         width: fit-content;
         height: auto;
-        padding: 0.5rem 1rem;
+        padding: 0.8rem 1rem;
     }
 }

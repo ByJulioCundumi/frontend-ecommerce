@@ -1,17 +1,18 @@
 import './app.scss'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/home/Home'
+import Register from './components/register/Register'
+import Auth from './pages/auth/Auth'
 import Login from './components/login/Login'
-import Register from './components/register/register'
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
+        <Home />
         <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/auth/*'>
+          <Route path='/auth/*' element={<Auth/>}>
             <Route path='login' element={<Login/>}/>
             <Route path='register' element={<Register/>}/>
           </Route>

@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import Filters from "../../components/filters/Filters";
 import Navbar from "../../components/navbar/Navbar";
 import Products from "../../components/products/Products";
@@ -9,10 +10,11 @@ function Home() {
         <>
             <section className="home">
                 <div className="home__container">
-                <Filters/>
-                <Navbar/>
-                <Recommended/>
-                <Products/>
+                    <Filters />
+                    <Navbar />
+                    <Recommended />
+                    <Products />
+                    <Outlet/>
                 </div>
             </section>
         </>

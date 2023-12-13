@@ -1,0 +1,45 @@
+.login{
+    display: flex;
+    flex-direction: column;
+    padding: 0 3rem;
+    gap: 6rem;
+
+    &__ul{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__form{
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid rgba(0, 0, 0, 0.178);
+        padding: 2rem;
+        border-radius: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        &--title{
+            text-align: center;
+        }
+
+        &--btn{
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &--input{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &__error{
+        color: red;
+        font-size: 0.8rem;
+    }
+}
+
+input{
+    width: 20rem;
+}

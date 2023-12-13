@@ -1,0 +1,37 @@
+.auth{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    background-color: rgba(2, 2, 2, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__close{
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        border: none;
+        width: 3%;
+        padding: 0 0.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: aliceblue;
+    }
+
+    &__close--icon{
+        font-size: 1.3rem;
+    }
+
+    &__container{
+        width: 90%;
+        min-height: 98%;
+        background-color: white;
+        padding: 2rem;
+        border-radius: 0.5rem;
+    }
+}

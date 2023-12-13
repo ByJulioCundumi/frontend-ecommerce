@@ -7,12 +7,13 @@ function Recommended() {
             <h2 className="recommended__title">Productos Recomendados</h2>
             <div className="recommended__products">
                 <button className="recommended__btn">Todos Los Productos</button>
-                <button className="recommended__btn">Aceite</button>
-                <button className="recommended__btn">Azucar</button>
-                <button className="recommended__btn">Galletas</button>
-                <button className="recommended__btn">Bebidas</button>
+                <button className="recommended__btn">Granos</button>
+                <button className="recommended__btn">Aceites</button>
+                <button className="recommended__btn">Carnes</button>
+                <button className="recommended__btn">Aseo</button>
             </div>
         </section>
+        
     </>
   )
 }
