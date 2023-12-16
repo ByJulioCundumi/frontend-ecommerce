@@ -1,12 +1,28 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { setUser } from "../../reducers/user/userSlice";
+import { useDispatch } from "react-redux";
 import "./login.scss";
+import { loginRequest } from "../../api/authRequest";
+import { IUser, IUserLogin } from "../../interfaces/IUser";
 
 function Login() {
+    const dispatch = useDispatch()
     const {register, handleSubmit, formState: {errors}} = useForm()
 
-    const onSubmit = handleSubmit(()=>{
-
+    const onSubmit = handleSubmit(async (info)=>{
+        const userDTO:IUserLogin = {
+            email: info.email,
+            password: info.password
+        }
+        try {
+            const result:IUser = await loginRequest(userDTO)
+            if(result.id){
+                dispatch(setUser(result))
+            }
+        } catch (error) {
+            console.log(error)
+        }
     })
 
   return (

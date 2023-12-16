@@ -10,7 +10,7 @@ function Auth() {
   const navigate = useNavigate();
 
   const closeModal = ()=>{
-    dispatch(setModal(false))
+    dispatch(setModal({isOpen:false}))
     navigate("/")
   }
 

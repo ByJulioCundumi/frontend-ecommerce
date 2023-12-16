@@ -1,12 +1,27 @@
 import { Link } from "react-router-dom";
 import "./register.scss";
 import { useForm } from "react-hook-form";
+import { IUser, IUserRegister } from "../../interfaces/IUser";
+import { registerRequest } from "../../api/authRequest";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../reducers/user/userSlice";
 
 function Register() {
   const { register, formState: { errors }, handleSubmit, watch } = useForm();
+  const dispatch = useDispatch()
 
-  const onSubmit = handleSubmit(() => {
-
+  const onSubmit = handleSubmit(async (info) => {
+    const userDTO:IUserRegister = {
+      firstname: info.firstname,
+      lastname: info.lastname,
+      email: info.email,
+      password: info.confpassword
+    }
+    //
+    const result:IUser = await registerRequest(userDTO)
+    if(result.id){
+      dispatch(setUser(result))
+    }
   })
 
   return (
@@ -21,7 +36,7 @@ function Register() {
 
           <div className="register__form--input">
             <p>Nombre:</p>
-            <input type="text" id="" {...register("firstname", {
+            <input type="text" {...register("firstname", {
               required: {
                 value: true,
                 message: "Ingrese su nombre"
@@ -40,7 +55,7 @@ function Register() {
 
           <div className="login__form--input">
             <p>Apellido:</p>
-            <input type="text" id="" {...register("lastname", {
+            <input type="text" {...register("lastname", {
               required: {
                 value: true,
                 message: "Ingrese su apellido"
@@ -59,7 +74,7 @@ function Register() {
 
           <div className="login__form--input">
             <p>Email:</p>
-            <input type="email" id="" {...register("email", {
+            <input type="email" {...register("email", {
               required: {
                 value: true,
                 message: "Ingrese su email"
@@ -78,7 +93,7 @@ function Register() {
 
           <div className="login__form--input">
             <p>Contraseña:</p>
-            <input type="password" id="" {...register("password", {
+            <input type="password" {...register("password", {
               required: {
                 value: true,
                 message: "Ingrese su contraseña"
@@ -97,7 +112,7 @@ function Register() {
 
           <div className="login__form--input">
             <p>Confirmar Contraseña:</p>
-            <input type="password" id="" {...register("confpassword", {
+            <input type="password" {...register("confpassword", {
               required: {
                 value: true,
                 message: "Confirme su contraseña"
