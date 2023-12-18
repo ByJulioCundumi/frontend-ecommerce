@@ -5,10 +5,12 @@ import { IUser, IUserRegister } from "../../interfaces/IUser";
 import { registerRequest } from "../../api/authRequest";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../reducers/user/userSlice";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const { register, formState: { errors }, handleSubmit, watch } = useForm();
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const onSubmit = handleSubmit(async (info) => {
     const userDTO:IUserRegister = {
@@ -21,6 +23,7 @@ function Register() {
     const result:IUser = await registerRequest(userDTO)
     if(result.id){
       dispatch(setUser(result))
+      navigate(`/auth/dashboard/${result.role}`)
     }
   })
 

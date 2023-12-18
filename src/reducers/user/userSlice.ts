@@ -9,6 +9,7 @@ const userSlice = createSlice({
         lastname: "",
         email: "",
         password: "",
+        role: "",
         createdAt: new Date(0).toISOString(),
         updatedAt: new Date(0).toISOString()
     },
@@ -19,6 +20,7 @@ const userSlice = createSlice({
             state.lastname = action.payload.lastname;
             state.email = action.payload.email;
             state.password = action.payload.password;
+            state.role = action.payload.role;
             state.createdAt = action.payload.createdAt;
             state.updatedAt = action.payload.updatedAt;
         },
@@ -28,6 +30,7 @@ const userSlice = createSlice({
             state.lastname = "";
             state.email = "";
             state.password = "";
+            state.role = "";
             state.createdAt = new Date(0).toISOString();
             state.updatedAt = new Date(0).toISOString();
         }

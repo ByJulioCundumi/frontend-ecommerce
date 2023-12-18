@@ -20,7 +20,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: aliceblue;
+        background-color: rgb(227, 234, 241);
     }
 
     &__close--icon{
@@ -30,7 +30,8 @@
     &__container{
         width: 90%;
         min-height: 98%;
-        background-color: white;
+        max-height: 98%;
+        background-color: rgb(223, 240, 248);
         padding: 2rem;
         border-radius: 0.5rem;
     }

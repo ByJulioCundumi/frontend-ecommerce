@@ -5,9 +5,11 @@ import { useDispatch } from "react-redux";
 import "./login.scss";
 import { loginRequest } from "../../api/authRequest";
 import { IUser, IUserLogin } from "../../interfaces/IUser";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const {register, handleSubmit, formState: {errors}} = useForm()
 
     const onSubmit = handleSubmit(async (info)=>{
@@ -19,6 +21,7 @@ function Login() {
             const result:IUser = await loginRequest(userDTO)
             if(result.id){
                 dispatch(setUser(result))
+                navigate(`/auth/dashboard/${result.role}`)
             }
         } catch (error) {
             console.log(error)

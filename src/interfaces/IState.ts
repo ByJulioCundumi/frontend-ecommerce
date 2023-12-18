@@ -8,7 +8,11 @@ export interface IState{
         lastname: string,
         email: string,
         password: string,
+        role: string,
         createdAt: string,
         updatedAt: string
+    },
+    loading: {
+        isLoading: boolean
     }
 }

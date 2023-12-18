@@ -36,8 +36,7 @@ function Navbar() {
                 {user.id ?
                     <ul className="nav__ul">
                         <li className="nav__li"><p>Bienvenido, {user.email}</p></li>
-                        <li className="nav__li"><button className="nav__btn"><BsCart3 className="nav__icon" /></button></li>
-                        <li className="nav__li"><Link to="/auth/login" className="nav__btn"><BiSolidDashboard className="nav__icon" /></Link></li>
+                        <li className="nav__li"><Link to={`/auth/dashboard/${user.role}`} className="nav__btn"><BiSolidDashboard className="nav__icon" /></Link></li>
                         <li className="nav__li"><button onClick={logout} className="nav__btn"><CiLogout className="nav__icon" /></button></li>
                     </ul>
                     :
