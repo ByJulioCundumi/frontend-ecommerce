@@ -7,8 +7,8 @@ import { HiMiniUsers } from "react-icons/hi2";
 import { IoMdSettings } from "react-icons/io";
 import { CiLogout } from "react-icons/ci";
 
-
 function AdminDashboard() {
+
   return (
     <>
         <section className="dashboard">

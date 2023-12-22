@@ -1,3 +1,5 @@
+import { IProduct } from "./IProduct"
+
 export interface IState{
     modal:{
         isOpen: boolean
@@ -14,5 +16,6 @@ export interface IState{
     },
     loading: {
         isLoading: boolean
-    }
+    },
+    products: IProduct[]
 }

@@ -30,8 +30,8 @@ function Filters() {
                             <label htmlFor="aceites">Aceites</label>
                         </div>
                         <div className="filters__category--select">
-                            <input className="radio" type="radio" name="products" id="aseo" />
-                            <label htmlFor="aseo">aseo</label>
+                            <input className="radio" type="radio" name="products" id="higiene" />
+                            <label htmlFor="higiene">Higiene</label>
                         </div>
                         <div className="filters__category--select">
                             <input className="radio" type="radio" name="products" id="bebidas" />
