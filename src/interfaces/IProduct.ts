@@ -13,10 +13,6 @@ export interface IProduct {
     stock: boolean
 }
 
-export interface IProducts {
-    products: IProduct[]
-}
-
 export interface IProductPayload {
     payload: IProduct
 }

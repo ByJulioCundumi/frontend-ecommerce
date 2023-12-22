@@ -20,9 +20,8 @@ function Home() {
     useEffect(() => {
         const request = async () => {
             try {
-                const result: IUser = await verifyTokenRequest()
-                //
                 dispatch(setLoading({isLoading: true}))
+                const result: IUser = await verifyTokenRequest()
                 const products: IProduct[] = await getProductsRequest()
                 dispatch(setLoading({isLoading: false}))
                 //

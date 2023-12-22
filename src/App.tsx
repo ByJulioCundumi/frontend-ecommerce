@@ -14,6 +14,7 @@ import AdminUsers from './components/adminUsers/AdminUsers'
 import AdminConfig from './components/adminConfig/AdminConfig'
 import AdminReturns from './components/adminReturns/AdminReturns'
 import AddProduct from './components/addProduct/AddProduct'
+import EditProduct from './components/editProduct/EditProduct'
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
                   <Route path='' element={<AdminMain/>}/>
                   <Route path='products' element={<AdminProducts/>}/>
                   <Route path='add-product' element={<AddProduct/>}/>
+                  <Route path='edit-product/:id' element={<EditProduct/>}/>
                   <Route path='orders' element={<AdminOrders/>}/>
                   <Route path='returns' element={<AdminReturns/>}/>
                   <Route path='users' element={<AdminUsers/>}/>

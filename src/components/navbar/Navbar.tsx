@@ -14,6 +14,7 @@ import { logoutRequest } from "../../api/authRequest";
 
 function Navbar() {
     const user = useSelector((state: IState) => { return state.user })
+    const isLoading = useSelector((state: IState) => { return state.loading.isLoading })
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -25,6 +26,10 @@ function Navbar() {
         logoutRequest()
         dispatch(unsetUser())
         navigate("/")
+    }
+
+    if(isLoading){
+        return <span>Cargando...</span>
     }
 
     return (

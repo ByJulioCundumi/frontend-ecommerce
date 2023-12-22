@@ -39,9 +39,6 @@ export const putProductRequest = async (productData:FormData, id:number)=>{
     try {
         const result = await fetch(`http://localhost:3000/api/product/${id}`, {
             method: "PUT",
-            headers: {
-                "Content-type":"multipart/form-data"
-            },
             body: productData,
             credentials: "include"
         })

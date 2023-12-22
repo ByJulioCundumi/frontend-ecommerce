@@ -2,16 +2,37 @@ import { Link } from "react-router-dom";
 import "./adminProducts.scss";
 import { useSelector } from "react-redux";
 import { IState } from "../../interfaces/IState";
+import { useDispatch } from "react-redux";
+import { deleteProduct } from "../../reducers/products/productsSlice";
+import { deleteProductRequest } from "../../api/productRequest";
+import { IProduct } from "../../interfaces/IProduct";
+import { useNavigate } from "react-router-dom";
 
 function AdminProducts() {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const products = useSelector((state: IState) => { return state.products })
     const isLoading = useSelector((state: IState) => { return state.loading.isLoading})
     
     if (isLoading) {
         return <span>Cargando...</span>;
     }
-    console.log(products)
     
+    const deleteProductById = async (p:IProduct)=>{
+        try {
+            if(p.id){
+                dispatch(deleteProduct(p))
+                await deleteProductRequest(p.id)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const goToEdit = (p:IProduct)=>{
+        navigate(`/auth/dashboard/admin/edit-product/${p.id}`)
+    }
+
     return (
         <>
             <section className="admin-products">
@@ -47,8 +68,8 @@ function AdminProducts() {
                                 <p className="">{p.stock}</p>
                             </div>
                             <div className="">
-                                <button className="admin-products__btn--edit">Editar</button>
-                                <button className="admin-products__btn--delete">Eliminar</button>
+                                <button onClick={()=>{goToEdit(p)}} className="admin-products__btn--edit">Editar</button>
+                                <button onClick={()=>{deleteProductById(p)}} className="admin-products__btn--delete">Eliminar</button>
                             </div>
                         </div>)
                     }) : <span>No se han registrado productos</span>}
