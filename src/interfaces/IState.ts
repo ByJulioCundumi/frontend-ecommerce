@@ -17,5 +17,6 @@ export interface IState{
     loading: {
         isLoading: boolean
     },
-    products: IProduct[]
+    products: IProduct[],
+    filteredProducts: IProduct[]
 }

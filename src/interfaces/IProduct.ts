@@ -10,7 +10,7 @@ export interface IProduct {
     prevPrice: number,
     currentPrice: number,
     category: string,
-    stock: boolean
+    stock: string
 }
 
 export interface IProductPayload {

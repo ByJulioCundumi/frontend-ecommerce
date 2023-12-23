@@ -13,28 +13,44 @@ import { IProduct } from "../../interfaces/IProduct";
 import { getProductsRequest } from "../../api/productRequest";
 import { addProducts } from "../../reducers/products/productsSlice";
 import { setLoading } from "../../reducers/loading/loadingSlice";
+import { addFilteredProducts } from "../../reducers/filteredProducts/filteredProducts";
 
 function Home() {
     const dispatch = useDispatch()
-
+    
     useEffect(() => {
-        const request = async () => {
+        const verifyToken = async () => {
             try {
                 dispatch(setLoading({isLoading: true}))
                 const result: IUser = await verifyTokenRequest()
-                const products: IProduct[] = await getProductsRequest()
                 dispatch(setLoading({isLoading: false}))
                 //
                 if (result.id) {
                     dispatch(setUser(result))
-                    dispatch(addProducts(products))
                 } 
             } catch (error) {
                 console.log(error)
                 dispatch(setLoading({isLoading: false}))
             }
         }
-        request()
+
+        const getAllProducts = async () => {
+            try {
+                dispatch(setLoading({isLoading: true}))
+                const products: IProduct[] = await getProductsRequest()
+                dispatch(setLoading({isLoading: false}))
+                //
+                if (products.length > 0) {
+                    dispatch(addProducts(products))
+                    dispatch(addFilteredProducts(products))
+                } 
+            } catch (error) {
+                console.log(error)
+                dispatch(setLoading({isLoading: false}))
+            }
+        }
+        getAllProducts()
+        verifyToken()
     }, [0])
 
     return (

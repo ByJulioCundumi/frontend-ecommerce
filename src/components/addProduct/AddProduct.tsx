@@ -118,18 +118,18 @@ function AddProduct() {
                   message: "Seleccione una categoria para el producto"
                 }
               })}>
-                <option value="grains">Granos</option>
-                <option value="dairy">Lacteos</option>
-                <option value="meats">Carnes</option>
-                <option value="oils">Aceites</option>
-                <option value="hygiene">Higiene</option>
-                <option value="drinks">Bebidas</option>
+                <option value="granos">Granos</option>
+                <option value="lacteos">Lacteos</option>
+                <option value="carnes">Carnes</option>
+                <option value="aceites">Aceites</option>
+                <option value="higiene">Higiene</option>
+                <option value="bebidas">Bebidas</option>
                 <option value="alcohol">Alcohol</option>
-                <option value="cigarettes">Cigarros</option>
-                <option value="candies">Dulceria</option>
-                <option value="cookies">Galletas</option>
-                <option value="canned">Enlatados</option>
-                <option value="condiments">Condimentos</option>
+                <option value="cigarros">Cigarros</option>
+                <option value="dulceria">Dulceria</option>
+                <option value="galletas">Galletas</option>
+                <option value="enlatados">Enlatados</option>
+                <option value="condimentos">Condimentos</option>
               </select>
               {errors.category && typeof errors.category?.message === "string" && <span className="addproduct__error">{errors.category.message}</span>}
             </div>
@@ -141,8 +141,8 @@ function AddProduct() {
                   message: "Seleccione el estado del producto"
                 }
               })}>
-                <option value="available">Disponible</option>
-                <option value="unavailable">No Disponible</option>
+                <option value="disponible">Disponible</option>
+                <option value="no disponible">No Disponible</option>
               </select>
               {errors.stock && typeof errors.stock?.message === "string" && <span className="addproduct__error">{errors.stock.message}</span>}
             </div>

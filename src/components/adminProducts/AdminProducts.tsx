@@ -7,6 +7,7 @@ import { deleteProduct } from "../../reducers/products/productsSlice";
 import { deleteProductRequest } from "../../api/productRequest";
 import { IProduct } from "../../interfaces/IProduct";
 import { useNavigate } from "react-router-dom";
+import { setLoading } from "../../reducers/loading/loadingSlice";
 
 function AdminProducts() {
     const dispatch = useDispatch()
@@ -22,7 +23,10 @@ function AdminProducts() {
         try {
             if(p.id){
                 dispatch(deleteProduct(p))
+                //
+                dispatch(setLoading({isLoading: true}))
                 await deleteProductRequest(p.id)
+                dispatch(setLoading({isLoading: false}))
             }
         } catch (error) {
             console.log(error)
