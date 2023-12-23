@@ -14,6 +14,7 @@ import { logoutRequest } from "../../api/authRequest";
 import { useForm } from "react-hook-form";
 import { addFilteredProducts } from "../../reducers/filteredProducts/filteredProducts";
 import { BsCart2 } from "react-icons/bs";
+import ShoppingCart from "../shoppingCart/ShoppingCart";
 
 function Navbar() {
     const {register, watch} = useForm()
@@ -58,6 +59,7 @@ function Navbar() {
                         <li className="nav__li"><button className="nav__btn"><BsCart3 className="nav__icon" /></button></li>
                         <li className="nav__li"><Link onClick={openModal} to="/auth/login" className="nav__btn">Iniciar Sesion <CiLogin className="nav__icon" /></Link></li>
                     </ul>}
+                    <ShoppingCart/>
             </nav>
         </>
     )
