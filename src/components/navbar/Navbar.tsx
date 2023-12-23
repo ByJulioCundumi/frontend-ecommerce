@@ -24,6 +24,7 @@ function Navbar() {
     const isLoading = useSelector((state: IState) => { return state.loading.isLoading })
     const products = useSelector((state: IState) => { return state.products })
     const cartModal = useSelector((state: IState) => { return state.cartModal.isOpen })
+    const shoppingCart = useSelector((state: IState) => { return state.shoppingCart })
 
     const filteredProducts = products.filter((p)=> p.name.includes(watch("search")))
     dispatch(addFilteredProducts(filteredProducts))
@@ -33,7 +34,6 @@ function Navbar() {
     }
 
     const onClickCartModal = ()=>{
-        
         dispatch(setCartModal({isOpen: !cartModal}))
     }
 
@@ -56,13 +56,13 @@ function Navbar() {
                 {user.id ?
                     <ul className="nav__ul">
                         <li className="nav__li"><p>Bienvenido, {user.email}</p></li>
-                        {user.role !== "admin" && <button onClick={onClickCartModal} className="nav__cart"><BsCart2 className="nav__icon"/></button>}
+                        {user.role !== "admin" && <button onClick={onClickCartModal} className="nav__cart"><BsCart2 className="nav__icon"/><p className="nav__cart--count">{shoppingCart.reduce((prev,curr)=>{return prev + curr.quantity},0)}</p></button>}
                         <li className="nav__li"><Link to={`/auth/dashboard/${user.role}`} className="nav__btn"><BiSolidDashboard className="nav__icon" /></Link></li>
                         <li className="nav__li"><button onClick={logout} className="nav__btn"><CiLogout className="nav__icon" /></button></li>
                     </ul>
                     :
                     <ul className="nav__ul">
-                        {user.role !== "admin" && <button onClick={onClickCartModal} className="nav__cart"><BsCart2 className="nav__icon"/></button>}
+                        {user.role !== "admin" && <button onClick={onClickCartModal} className="nav__cart"><BsCart2 className="nav__icon"/><p className="nav__cart--count">{shoppingCart.reduce((prev,curr)=>{return prev + curr.quantity},0)}</p></button>}
                         <li className="nav__li"><Link onClick={openModal} to="/auth/login" className="nav__btn">Iniciar Sesion <CiLogin className="nav__icon" /></Link></li>
                     </ul>}
                     <ShoppingCart/>

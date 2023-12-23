@@ -21,5 +21,6 @@ export interface IState{
     filteredProducts: IProduct[],
     cartModal:{
         isOpen:boolean
-    }
+    },
+    shoppingCart: IProduct[]
 }

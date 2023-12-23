@@ -2,9 +2,11 @@ import "./products.scss"
 import { IoIosStarOutline } from "react-icons/io";
 import { IoBag } from "react-icons/io5";
 import { IState } from "../../interfaces/IState";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../reducers/shoppingCart/shoppingCart";
 
 function Products() {
+    const dispatch = useDispatch()
     const products = useSelector((state:IState)=>state.filteredProducts)
     const isLoading = useSelector((state:IState)=>state.loading.isLoading)
     const available = products.filter((p)=>p.stock === "disponible")
@@ -30,7 +32,7 @@ function Products() {
                             <p className="product__price--prev">${p.prevPrice}</p>
                             <p className="product__price--actual">${p.currentPrice}</p>
                         </div>
-                        <button className="product__btn"><IoBag/></button>
+                        <button onClick={()=> dispatch(addToCart(p))} className="product__btn"><IoBag/></button>
                     </div>
                 </div>
             </div>
