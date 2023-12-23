@@ -1,9 +1,13 @@
+import { useSelector } from "react-redux";
 import "./shoppingCart.scss";
+import { IState } from "../../interfaces/IState";
 
 function ShoppingCart() {
+    const cartModal = useSelector((state:IState)=>state.cartModal.isOpen)
+    
     return (
         <>
-            <section className="shopping-cart">
+            <section className={cartModal ? "shopping-cart" : "shopping-cart hidde"}>
                 <h2 className="shopping-cart__title">Carrito de compras</h2>
                 <div className="shopping-cart__container">
                     <div className="shopping-cart__product">

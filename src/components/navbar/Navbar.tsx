@@ -1,5 +1,4 @@
 import "./navbar.scss";
-import { BsCart3 } from "react-icons/bs";
 import { CiLogin } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -15,6 +14,7 @@ import { useForm } from "react-hook-form";
 import { addFilteredProducts } from "../../reducers/filteredProducts/filteredProducts";
 import { BsCart2 } from "react-icons/bs";
 import ShoppingCart from "../shoppingCart/ShoppingCart";
+import { setCartModal } from "../../reducers/cartModal/cartModal";
 
 function Navbar() {
     const {register, watch} = useForm()
@@ -23,12 +23,18 @@ function Navbar() {
     const user = useSelector((state: IState) => { return state.user })
     const isLoading = useSelector((state: IState) => { return state.loading.isLoading })
     const products = useSelector((state: IState) => { return state.products })
+    const cartModal = useSelector((state: IState) => { return state.cartModal.isOpen })
 
     const filteredProducts = products.filter((p)=> p.name.includes(watch("search")))
     dispatch(addFilteredProducts(filteredProducts))
 
     const openModal = () => {
         dispatch(setModal({ isOpen: true }))
+    }
+
+    const onClickCartModal = ()=>{
+        
+        dispatch(setCartModal({isOpen: !cartModal}))
     }
 
     const logout = () => {
@@ -50,13 +56,13 @@ function Navbar() {
                 {user.id ?
                     <ul className="nav__ul">
                         <li className="nav__li"><p>Bienvenido, {user.email}</p></li>
-                        {user.role !== "admin" && <button className="nav__cart"><BsCart2 className="nav__icon"/></button>}
+                        {user.role !== "admin" && <button onClick={onClickCartModal} className="nav__cart"><BsCart2 className="nav__icon"/></button>}
                         <li className="nav__li"><Link to={`/auth/dashboard/${user.role}`} className="nav__btn"><BiSolidDashboard className="nav__icon" /></Link></li>
                         <li className="nav__li"><button onClick={logout} className="nav__btn"><CiLogout className="nav__icon" /></button></li>
                     </ul>
                     :
                     <ul className="nav__ul">
-                        <li className="nav__li"><button className="nav__btn"><BsCart3 className="nav__icon" /></button></li>
+                        {user.role !== "admin" && <button onClick={onClickCartModal} className="nav__cart"><BsCart2 className="nav__icon"/></button>}
                         <li className="nav__li"><Link onClick={openModal} to="/auth/login" className="nav__btn">Iniciar Sesion <CiLogin className="nav__icon" /></Link></li>
                     </ul>}
                     <ShoppingCart/>

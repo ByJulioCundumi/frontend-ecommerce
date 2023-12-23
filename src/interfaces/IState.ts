@@ -18,5 +18,8 @@ export interface IState{
         isLoading: boolean
     },
     products: IProduct[],
-    filteredProducts: IProduct[]
+    filteredProducts: IProduct[],
+    cartModal:{
+        isOpen:boolean
+    }
 }

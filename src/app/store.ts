@@ -4,6 +4,7 @@ import userReducer from "../reducers/user/userSlice.js";
 import loadingReducer from "../reducers/loading/loadingSlice.js";
 import productReducer from "../reducers/products/productsSlice.js";
 import filteredProductsReducer from "../reducers/filteredProducts/filteredProducts.js";
+import cartModalReducer from "../reducers/cartModal/cartModal.js";
 
 export default configureStore({
     reducer: {
@@ -11,6 +12,7 @@ export default configureStore({
         user: userReducer,
         products: productReducer,
         loading: loadingReducer,
-        filteredProducts: filteredProductsReducer
+        filteredProducts: filteredProductsReducer,
+        cartModal: cartModalReducer
     }
 })
