@@ -6,6 +6,7 @@ import productReducer from "../reducers/products/productsSlice.js";
 import filteredProductsReducer from "../reducers/filteredProducts/filteredProducts.js";
 import cartModalReducer from "../reducers/cartModal/cartModal.js";
 import shoppingCartReducer from "../reducers/shoppingCart/shoppingCart.js";
+import filterOptionReducer from "../reducers/filterOption/filterOption.js";
 
 export default configureStore({
     reducer: {
@@ -15,6 +16,7 @@ export default configureStore({
         loading: loadingReducer,
         filteredProducts: filteredProductsReducer,
         cartModal: cartModalReducer,
-        shoppingCart: shoppingCartReducer
+        shoppingCart: shoppingCartReducer,
+        filterOption: filterOptionReducer
     }
 })

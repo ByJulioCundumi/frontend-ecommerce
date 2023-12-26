@@ -15,6 +15,10 @@ import AdminConfig from './components/adminConfig/AdminConfig'
 import AdminReturns from './components/adminReturns/AdminReturns'
 import AddProduct from './components/addProduct/AddProduct'
 import EditProduct from './components/editProduct/EditProduct'
+import UserCart from './components/userCart/UserCart'
+import UserProfile from './components/userProfile/UserProfile'
+import UserPurchases from './components/userPurchases/UserPurchases'
+import UserReturns from './components/userReturns/UserReturns'
 
 function App() {
 
@@ -30,7 +34,12 @@ function App() {
 
             <Route element={<AuthRequired />}>
               <Route path='dashboard/*'>
-                <Route path='user' element={<UserDashboard />} />
+                <Route path='user/*' element={<UserDashboard />}>
+                  <Route path='' element={<UserCart/>}/>
+                  <Route path='profile' element={<UserProfile/>}/>
+                  <Route path='purchases' element={<UserPurchases/>}/>
+                  <Route path='returns' element={<UserReturns/>}/>
+                </Route>
 
                 <Route path='admin/*' element={<AdminDashboard />} >
                   <Route path='' element={<AdminMain/>}/>

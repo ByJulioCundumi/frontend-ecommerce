@@ -1,0 +1,50 @@
+.userProfile{
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    &__container{
+        padding: 3rem 1.5rem;
+        border: 1px solid rgba(0, 0, 0, 0.253);
+        border-radius: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__text{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__img{
+        width: 250px;
+        height: 150px;
+        object-fit: fill;
+    }
+
+    &__names{
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+    }
+
+    &__firstname, &__lastname, &__email, &__password, &__role{
+        display: flex;
+        gap: 0.3rem;
+    }
+
+    &__role{
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 2rem;
+    }
+}
+
+.title{
+    font-weight: bold;
+}

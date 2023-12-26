@@ -22,5 +22,6 @@ export interface IState{
     cartModal:{
         isOpen:boolean
     },
-    shoppingCart: IProduct[]
+    shoppingCart: IProduct[],
+    filterOption: {option:string}
 }

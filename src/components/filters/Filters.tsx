@@ -1,45 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./filters.scss";
 import { useRef } from "react";
-import { IState } from "../../interfaces/IState";
-import { addFilteredProducts } from "../../reducers/filteredProducts/filteredProducts";
+import { setFilterOption } from "../../reducers/filterOption/filterOption";
 
 function Filters() {
-    const selectRef = useRef<HTMLSelectElement | null>(null);
-    const products = useSelector((state: IState) => state.products)
-    const filtered = useSelector((state: IState) => state.filteredProducts)
     const dispatch = useDispatch()
+    const selectRef = useRef<HTMLSelectElement | null>(null);
 
     const filterOption = (option: string) => {
-        const filteredProducts = products.filter((p) => p.category === option)
-        dispatch(addFilteredProducts(filteredProducts))
-        if(option === "todo"){
-            dispatch(addFilteredProducts(products))
-        } 
+        dispatch(setFilterOption({option: option}))
     }
 
     const selectOption = ()=>{
         if(selectRef.current){
-            const option = selectRef.current.value;
-            switch (option) {
-                case "todo-select":
-                    const allProducts = [...filtered].sort(() => Math.random() - 0.5)
-                    dispatch(addFilteredProducts(allProducts));
-                    break;
-
-                case "menor":
-                    const lowerFiltered = [...filtered].sort((a, b) => a.currentPrice - b.currentPrice);
-                    dispatch(addFilteredProducts(lowerFiltered));
-                    break;
-
-                case "mayor":
-                    const higherFiltered = [...filtered].sort((a, b) => b.currentPrice - a.currentPrice);
-                    dispatch(addFilteredProducts(higherFiltered));
-                    break;
-
-                default:
-                    break;
-            }
+            dispatch(setFilterOption({option:selectRef.current.value}))
         }
     }
 

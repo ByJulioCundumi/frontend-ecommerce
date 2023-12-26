@@ -2,11 +2,25 @@ import { useDispatch, useSelector } from "react-redux";
 import "./shoppingCart.scss";
 import { IState } from "../../interfaces/IState";
 import { increaseCart, decreaseCart, removeFromCart } from "../../reducers/shoppingCart/shoppingCart";
+import { useNavigate } from "react-router-dom";
+import { setCartModal } from "../../reducers/cartModal/cartModal";
 
 function ShoppingCart() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const cartModal = useSelector((state:IState)=>state.cartModal.isOpen)
     const shoppingCart = useSelector((state:IState)=>state.shoppingCart)
+    const user = useSelector((state:IState)=>state.user)
+
+    const handleBuy = ()=>{
+        if(!user.id){
+            navigate("auth/login")
+            dispatch(setCartModal({isOpen: !cartModal}))
+        }else if(user.role === "user"){
+            navigate("auth/dashboard/user")
+            dispatch(setCartModal({isOpen: !cartModal}))
+        }
+    }
     
     return (
         <>
@@ -51,7 +65,7 @@ function ShoppingCart() {
                     <p className="">Total:</p>
                     <p className="">{shoppingCart.reduce((prev, curr)=> {return prev + (curr.currentPrice * curr.quantity)}, 0)}</p>
                 </div>
-                <button className="shopping-cart__buy">Comprar</button>
+                <button onClick={handleBuy} className="shopping-cart__buy">Comprar</button>
             </section>
         </>
     )

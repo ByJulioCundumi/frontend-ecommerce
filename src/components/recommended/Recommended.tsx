@@ -1,18 +1,12 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import "./recommended.scss"
-import { IState } from "../../interfaces/IState"
-import { addFilteredProducts } from "../../reducers/filteredProducts/filteredProducts"
+import { setFilterOption } from "../../reducers/filterOption/filterOption"
 
 function Recommended() {
-  const products = useSelector((state:IState)=>state.products)
   const dispatch = useDispatch()
 
   const filterOption = (option:string)=>{
-    const filteredProducts = products.filter((p)=> p.category === option)
-    dispatch(addFilteredProducts(filteredProducts))
-    if(option === "todo"){
-      dispatch(addFilteredProducts(products))
-    }
+    dispatch(setFilterOption({option:option}))
   }
 
   return (
